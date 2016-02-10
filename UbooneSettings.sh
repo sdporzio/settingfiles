@@ -4,15 +4,18 @@ if [ $? != 0 ]; then
     tmux new-session -s uboonesession -n uboonegpvm1 -d
     tmux new-window -n uboonegpvm2 -t uboonesession
     tmux new-window -n mountpoint -t uboonesession
-    tmux split-window -h -t uboonesession:3
+    #tmux split-window -h -t uboonesession:3
+    tmux send-keys -t uboonesession:1 'clear' C-m
     tmux send-keys -t uboonesession:1 'ssh sporzio@uboonegpvm01.fnal.gov' C-m
+    tmux send-keys -t uboonesession:2 'clear' C-m
     tmux send-keys -t uboonesession:2 'ssh sporzio@uboonegpvm01.fnal.gov' C-m
-    tmux send-keys -t uboonesession:3.1 'sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/app/users/sporzio /home/sdporzio/FNAL' C-m
-    tmux send-keys -t uboonesession:3.1 'cd /home/sdporzio/FNAL' C-m
-    tmux send-keys -t uboonesession:3.1 'clear' C-m
-    tmux send-keys -t uboonesession:3.1 'ls' C-m
-    tmux send-keys -t uboonesession:3.2 'clear' C-m
-    tmux send-keys -t uboonesession:3.2 'ls' C-m
+#    if [ "$(ls -A /home/sdporzio/FNAL)" ]; then
+    tmux send-keys -t uboonesession:3 'sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/app/users/sporzio /home/sdporzio/FNAL' C-m
+    tmux send-keys -t uboonesession:3 'cd /home/sdporzio/FNAL' C-m
+    tmux send-keys -t uboonesession:3 'clear' C-m
+    tmux send-keys -t uboonesession:3 'ls' C-m
+    #tmux send-keys -t uboonesession:3.2 'clear' C-m
+    #tmux send-keys -t uboonesession:3.2 'ls' C-m
     tmux select-window -t uboonesession:1
 fi
 tmux attach -t uboonesession

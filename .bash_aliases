@@ -15,19 +15,19 @@ alias ana='cd /home/sdporzio/HEP/HVtask/analysis'
 
 #-> PERSONAL ALIASES
 alias fav='less /home/sdporzio/.bash_aliases'
-alias modfav='vim /home/sdporzio/.bash_aliases'
+alias modfav='gedit /home/sdporzio/.bash_aliases'
 alias sourcefav='source /home/sdporzio/.bash_aliases'
 alias rooq='root -l -b -q'
 alias tb='root /home/sdporzio/Documents/TBrowser/tb.C'
 alias vir='vim -R'
-alias ap='absolute_path'
 alias ticket='kinit -A sporzio'
+alias ap='func_absolutepath'
 alias myssh='func_ssh'
 alias mygit='func_git'
 alias myclip='func_clip'
 alias mountub='func_mountuboone'
 alias unmountub='func_unmountuboone'
-
+alias checkweight='sudo du -h --max-depth=1 | sort -hr'
 
 #-> REDEFINING COMMANDS
 alias ls='ls -BCFX --color=auto'
@@ -80,12 +80,17 @@ func_mountuboone(){
 func_unmountuboone(){
 	echo "# Unmounting uboonegpvm01"
 	echo "> fusermount -u /home/sdporzio/FNAL"
-	fusermount -u /home/sdporzio/FNAL
+	fusermount -u${1} /home/sdporzio/FNAL
 }
 func_clip(){
 	echo "> ${1} | xclip -selection c"
 	${1} | xclip -selection c
 }
+func_absolutepath(){
+	echo "$PWD/${1}";
+}
+
+
 #-------------------------------------------------------------------------------------------------------------#
 
 
