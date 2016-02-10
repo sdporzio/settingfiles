@@ -13,5 +13,5 @@ echo "> git add -A :/"
 git add -A :/
 echo "> git commit -m 'auto'"
 git commit -m "auto"
-echo "> git push origin master"
-git push origin master
+echo "> git push"
+git push
