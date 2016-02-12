@@ -9,25 +9,26 @@
 #USEFUL STUFF: history (see history of commands), jobs -l (see active jobs)
 
 #-> SHORTCUTS
-alias uni='cd /home/sdporzio/Dropbox/University'
-alias db='cd /home/sdporzio/Dropbox'
-alias ana='cd /home/sdporzio/HEP/HVtask/analysis'
+alias uni='cd ${HOME}/Dropbox/University'
+alias db='cd ${HOME}/Dropbox'
+alias ana='cd ${HOME}/HEP/HVtask/analysis'
 
 #-> PERSONAL ALIASES
-alias fav='less /home/sdporzio/.bash_aliases'
-alias modfav='gedit /home/sdporzio/.bash_aliases'
-alias sourcefav='source /home/sdporzio/.bash_aliases'
+alias fav='less ${HOME}/.bash_aliases'
+alias modfav='vim ${HOME}/.bash_aliases'
+alias sourcefav='source ${HOME}/.bash_aliases'
 alias rooq='root -l -b -q'
-alias tb='root /home/sdporzio/Documents/TBrowser/tb.C'
+alias tb='root ${HOME}/Documents/TBrowser/tb.C'
 alias vir='vim -R'
+alias ap='absolute_path'
 alias ticket='kinit -A sporzio'
-alias ap='func_absolutepath'
 alias myssh='func_ssh'
 alias mygit='func_git'
 alias myclip='func_clip'
 alias mountub='func_mountuboone'
 alias unmountub='func_unmountuboone'
-alias checkweight='sudo du -h --max-depth=1 | sort -hr'
+alias home='echo ${HOME}'
+
 
 #-> REDEFINING COMMANDS
 alias ls='ls -BCFX --color=auto'
@@ -36,10 +37,10 @@ alias root='root -l'
 alias open='gnome-open'
 
 #-> MOVING STUFF BETWEEN SERVERS
-alias heppull='scp -r davide@hepgpu1.hep.manchester.ac.uk:/afs/hep.man.ac.uk/u/davide/GetHome /home/sdporzio/HEP/'
-alias heppush='scp -r /home/sdporzio/HEP/GetOffice davide@hepgpu1.hep.manchester.ac.uk:/afs/hep.man.ac.uk/u/davide/'
-alias upull='scp -r sporzio@uboonegpvm01.fnal.gov:/afs/fnal.gov/files/home/room3/sporzio/Uploads /home/sdporzio/HEP'
-alias upush='scp -r /home/sdporzio/HEP/Downloads porzio@uboonegpvm01.fnal.gov:/afs/fnal.gov/files/home/room3/sporzio/'
+alias heppull='scp -r davide@hepgpu1.hep.manchester.ac.uk:/afs/hep.man.ac.uk/u/davide/GetHome ${HOME}/HEP/'
+alias heppush='scp -r ${HOME}/HEP/GetOffice davide@hepgpu1.hep.manchester.ac.uk:/afs/hep.man.ac.uk/u/davide/'
+alias upull='scp -r sporzio@uboonegpvm01.fnal.gov:/afs/fnal.gov/files/home/room3/sporzio/Uploads ${HOME}/HEP'
+alias upush='scp -r ${HOME}/HEP/Downloads porzio@uboonegpvm01.fnal.gov:/afs/fnal.gov/files/home/room3/sporzio/'
 
 
 #-> PERSONAL FUNCTIONS
@@ -65,32 +66,27 @@ gpp(){
 func_mountuboone(){
 	echo "# Mounting uboonegpvm01"
 	if [ $1 == "app" ]; then
-		echo "> sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/app/users/sporzio /home/sdporzio/FNAL"
-		sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/app/users/sporzio /home/sdporzio/FNAL
+		echo "> sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/app/users/sporzio ${HOME}/FNAL"
+		sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/app/users/sporzio ${HOME}/FNAL
 	elif [ $1 == "data" ]; then
-		echo "> sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/data/users/sporzio /home/sdporzio/FNAL"
-		sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/data/users/sporzio /home/sdporzio/FNAL
+		echo "> sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/data/users/sporzio ${HOME}/FNAL"
+		sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/data/users/sporzio ${HOME}/FNAL
 	else
-		echo "> sshfs sporzio@uboonegpvm01.FNAL.GOV:${1} /home/sdporzio/FNAL"
-		sshfs sporzio@uboonegpvm01.FNAL.GOV:${1} /home/sdporzio/FNAL
+		echo "> sshfs sporzio@uboonegpvm01.FNAL.GOV:${1} ${HOME}/FNAL"
+		sshfs sporzio@uboonegpvm01.FNAL.GOV:${1} ${HOME}/FNAL
 	fi
-	echo "> cd /home/sdporzio/FNAL"
-	cd /home/sdporzio/FNAL
+	echo "> cd ${HOME}/FNAL"
+	cd ${HOME}/FNAL
 }
 func_unmountuboone(){
 	echo "# Unmounting uboonegpvm01"
-	echo "> fusermount -u /home/sdporzio/FNAL"
-	fusermount -u${1} /home/sdporzio/FNAL
+	echo "> fusermount -u ${HOME}/FNAL"
+	fusermount -u ${HOME}/FNAL
 }
 func_clip(){
 	echo "> ${1} | xclip -selection c"
 	${1} | xclip -selection c
 }
-func_absolutepath(){
-	echo "$PWD/${1}";
-}
-
-
 #-------------------------------------------------------------------------------------------------------------#
 
 
