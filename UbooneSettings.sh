@@ -11,7 +11,7 @@ if [ $? != 0 ]; then
     tmux send-keys -t uboonesession:2 'ssh sporzio@uboonegpvm01.fnal.gov' C-m
 #    if [ "$(ls -A /home/sdporzio/FNAL)" ]; then
     tmux send-keys -t uboonesession:3 'sshfs sporzio@uboonegpvm01.FNAL.GOV:/uboone/app/users/sporzio /home/sdporzio/FNAL' C-m
-    tmux send-keys -t uboonesession:3 'cd /home/sdporzio/FNAL' C-m
+    tmux send-keys -t uboonesession:3 'cd ${HOME}/FNAL' C-m
     tmux send-keys -t uboonesession:3 'clear' C-m
     tmux send-keys -t uboonesession:3 'ls' C-m
     #tmux send-keys -t uboonesession:3.2 'clear' C-m
