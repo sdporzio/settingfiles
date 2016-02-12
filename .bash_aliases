@@ -1,5 +1,3 @@
-
-
 #-------------------------------------------------- ALIASES --------------------------------------------------#
 #-> USEFUL STUFF
 #PDFtoPNG: convert -trim -density 300 XXX.pdf XXX.png
@@ -15,19 +13,19 @@ alias ana='cd ${HOME}/HEP/HVtask/analysis'
 
 #-> PERSONAL ALIASES
 alias fav='less ${HOME}/.bash_aliases'
-alias modfav='vim ${HOME}/.bash_aliases'
+alias modfav='gedit ${HOME}/.bash_aliases; source ${HOME}/.bash_aliases'
 alias sourcefav='source ${HOME}/.bash_aliases'
 alias rooq='root -l -b -q'
 alias tb='root ${HOME}/Documents/TBrowser/tb.C'
 alias vir='vim -R'
-alias ap='absolute_path'
+alias ap='func_absolutepath'
 alias ticket='kinit -A sporzio'
 alias myssh='func_ssh'
 alias mygit='func_git'
 alias myclip='func_clip'
 alias mountub='func_mountuboone'
 alias unmountub='func_unmountuboone'
-alias home='echo ${HOME}'
+alias e='func_emacs'
 
 
 #-> REDEFINING COMMANDS
@@ -86,6 +84,12 @@ func_unmountuboone(){
 func_clip(){
 	echo "> ${1} | xclip -selection c"
 	${1} | xclip -selection c
+}
+func_absolutepath(){
+	echo ${PWD}/${1}
+}
+func_emacs(){
+emacs ${@} & 
 }
 #-------------------------------------------------------------------------------------------------------------#
 
